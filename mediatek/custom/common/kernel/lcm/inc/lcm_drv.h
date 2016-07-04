@@ -621,6 +621,11 @@ typedef struct
 	void (*read_fb)(unsigned char *buffer);	
     int (*ioctl)(LCM_DRV_IOCTL_CMD cmd, unsigned int data);
 /////////////////////////////////////////////////
+    //Append by Jieve Liu
+//Begin{
+    int (*get_initialization_settings)(unsigned char table[]);
+    int (*set_initialization_settings)(const unsigned char table[], const int count);
+//}Append by Jieve Liu
 
 } LCM_DRIVER;
 
