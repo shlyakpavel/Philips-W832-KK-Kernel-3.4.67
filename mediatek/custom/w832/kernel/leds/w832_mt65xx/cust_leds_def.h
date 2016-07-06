@@ -3,6 +3,7 @@
 
 //#define CUST_LEDS_BACKLIGHT_PMIC_PARA /* parallel */
 //#define CUST_LEDS_BACKLIGHT_PMIC_SERI /* series */
+
 enum mt65xx_led_mode
 {
 	MT65XX_LED_MODE_NONE,
@@ -19,7 +20,6 @@ enum mt65xx_led_pmic
 	MT65XX_LED_PMIC_LCD,
 	MT65XX_LED_PMIC_LCD_ISINK,
 	MT65XX_LED_PMIC_LCD_BOOST,
-	//MT65XX_LED_PMIC_NLED_ISINK3, //qus1, tinno77_s9091 doesnt need, conflict with red indication in charger!
 	MT65XX_LED_PMIC_NLED_ISINK4,
 	MT65XX_LED_PMIC_NLED_ISINK5
 };
@@ -29,11 +29,9 @@ struct PWM_config
 	int div;
 	int low_duration;
 	int High_duration;
-	BOOL pmic_pad;
 };
 typedef int (*cust_brightness_set)(int level, int div);
 typedef int (*cust_set_brightness)(int level);
-
 /*
  * name : must the same as lights HAL
  * mode : control mode
@@ -51,9 +49,5 @@ struct cust_mt65xx_led {
 };
 
 extern struct cust_mt65xx_led *get_cust_led_list(void);
-
-#define FIXED_BUTTON_LEDS_BRIGHTNESS 0x9
-#define FIXED_R_LEDS_BRIGHTNESS 10  //max 31
-#define FIXED_G_LEDS_BRIGHTNESS 10  //max 31
 
 #endif /* _CUST_LEDS_DEF_H */

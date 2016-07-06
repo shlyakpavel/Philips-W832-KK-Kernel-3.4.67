@@ -1492,18 +1492,6 @@ void accdet_check_work_callback(struct work_struct *work)
 }
 #endif
 
-//<20121128 genesis: fix headset plug state wrong when hook key press vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-//<20121011 genesis: control headset switch vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-extern void headset_change(void);
-bool isHeadsetPlug(void)
-{
-	//HS_K50N("%s accdet_status:%i",__func__,accdet_status)//genesis
-	return accdet_status != PLUG_OUT;
-}
-EXPORT_SYMBOL(isHeadsetPlug);
-//>20121011 genesis
-//>20121128 genesis
-
 // judge cable type and implement the most job
 void accdet_work_callback(struct work_struct *work)
 {
@@ -1513,10 +1501,7 @@ void accdet_work_callback(struct work_struct *work)
 
     wake_lock(&accdet_irq_lock);
     check_cable_type();
-	
-	//<20121011 genesis: control headset switch vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-    headset_change();
-    //>20121011 genesis
+    
     
     if(cable_type != DOUBLE_CHECK_TV)
     {

@@ -58,7 +58,7 @@ int bma250_cust_acc_power(struct acc_hw *hw, unsigned int on, char* devname)
 /*---------------------------------------------------------------------------*/
 static struct acc_hw bma250_cust_acc_hw = {
     .i2c_num = 0,
-    .direction = 1,			//Ivan original = 2,0,6
+    .direction = 4,			//Pavel already tried 1,2,3
     .power_id = MT65XX_POWER_NONE,  /*!< LDO is not used */
     .power_vol= VOL_DEFAULT,        /*!< LDO is not used */
     .firlen = 16,                   /*!< don't enable low pass fileter */
